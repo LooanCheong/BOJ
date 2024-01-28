@@ -10,11 +10,7 @@ for _ in range(t):
     dp[1][0] = sticker[1][0]
 
     for i in range(1, n):
-        for j in range(2):
-            if j == 0:
-                dp[j][i] = max(dp[1][i - 1] + sticker[j][i], dp[0][i - 1])
-
-            elif j == 1:
-                dp[j][i] = max(dp[0][i - 1] + sticker[j][i], dp[1][i - 1])
+        dp[0][i] = max(dp[1][i - 1] + sticker[0][i], dp[0][i - 1])
+        dp[1][i] = max(dp[0][i - 1] + sticker[1][i], dp[1][i - 1])
 
     print(max(map(max, dp)))
